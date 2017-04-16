@@ -38,7 +38,7 @@
     <div id="remotes"></div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script src="simplewebrtc.bundle.js"></script>
+<script src="lib/simplewebrtc.bundle.js"></script>
 <script>
     // grab the room from the URL
     var room = '0';
@@ -61,20 +61,20 @@
         if (room) webrtc.joinRoom(room);
     });
 
-    // function showVolume(el, volume) {
-    //     if (!el) return;
-    //     if (volume < -45) { // vary between -45 and -20
-    //         el.style.height = '0px';
-    //     } else if (volume > -20) {
-    //         el.style.height = '100%';
-    //     } else {
-    //         el.style.height = '' + Math.floor((volume + 100) * 100 / 25 - 220) + '%';
-    //     }
-    // }
+    function showVolume(el, volume) {
+        if (!el) return;
+        if (volume < -45) { // vary between -45 and -20
+            el.style.height = '0px';
+        } else if (volume > -20) {
+            el.style.height = '100%';
+        } else {
+            el.style.height = '' + Math.floor((volume + 100) * 100 / 25 - 220) + '%';
+        }
+    }
     webrtc.on('channelMessage', function(peer, label, data) {
         if (data.type == 'volume') {
             //SEND MESSAGES HERE
-            //showVolume(document.getElementById('volume_' + peer.id), data.volume);
+            showVolume(document.getElementById('volume_' + peer.id), data.volume);
         }
     });
     webrtc.on('videoAdded', function(video, peer) {
@@ -106,7 +106,7 @@
     });
     webrtc.on('volumeChange', function(volume, treshold) {
         //console.log('own volume', volume);
-        //showVolume(document.getElementById('localVolume'), volume);
+        showVolume(document.getElementById('localVolume'), volume);
     });
 
     // Since we use this twice we put it here
