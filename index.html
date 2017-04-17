@@ -8,7 +8,7 @@
 
 <body>
 	<h1>Mixtaped</h1>
-	<h2>Go to /broadcast.html to broadcast.</h2>
+	<h2>Go to /broadcast</h2>
 	<h2>Click to watch:</h2>
 	<div id="index_remote_collection"></div>
 </body>
@@ -43,7 +43,7 @@
 
 		video.onclick = function() {
 			// Go to the watch page
-			window.location.href = "/watch.html?" + peer.id;
+			window.location.href = "/watch/" + peer.id;
 		};
 
 		// remote container
@@ -51,7 +51,7 @@
 		container.id = "index_remote_container_" + webrtc.getDomId(peer);  // cannot use peer.id here, don't know why
 		container.className = "index_video_container";
 		container.appendChild(video);
-		
+
 		// volume bar
 		var vol = document.createElement("div");
 		vol.id = "index_remote_volume_" + peer.id;

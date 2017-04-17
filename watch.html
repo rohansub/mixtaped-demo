@@ -13,9 +13,9 @@
 	<div id="watch_remote_collection"></div>
 </body>
 
-<script src="lib/simplewebrtc.bundle.js"></script>
+<script src="../lib/simplewebrtc.bundle.js"></script>
 <script>
-	var host = location.search && location.search.split("?")[1];
+	var host = <%-JSON.stringify( user )%>;
 
 	// create our webrtc connection
 	var webrtc = new SimpleWebRTC({
