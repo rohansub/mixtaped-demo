@@ -6,6 +6,6 @@ var app = express();
 
 app.use(express.static(__dirname));
 
-http.createServer(app).listen(8000);
+http.createServer(app).listen(80);
 
-console.log('running on http://localhost:8000');
+console.log('running on http://localhost:80');
