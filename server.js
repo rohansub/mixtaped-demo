@@ -7,7 +7,7 @@ var fs = require('fs'),
 
 var app = express();
 app.use(express.static(__dirname));
-
+app.engine('.html', require('ejs').__express);
 http.createServer(app).listen(80);
 console.log('running on http://localhost:80');
 
