@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Mixtaped</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<h1>Mixtaped</h1>
+	<h2>You are now broadcasting. Do not refresh the page.</h2>
+
+	<div class="hero_video_container">
+		<video id="cast_video_local"></video>
+	</div>
+</body>
+
+<script src="lib/simplewebrtc.bundle.js"></script>
+<script>
+	// create our webrtc connection
+	var webrtc = new SimpleWebRTC({
+		// the id/element dom element that will hold "our" video
+		localVideoEl: "cast_video_local",
+		// the id/element dom element that will hold remote videos
+		remoteVideosEl: "",
+		// immediately ask for camera access
+		autoRequestMedia: true,
+
+		debug: false,
+		detectSpeakingEvents: true
+	});
+
+	// when it is ready, join room "main"
+	webrtc.on("readyToCall", function() {
+		console.log("readyToCall");
+
+		webrtc.joinRoom("main");
+	});
+</script>
+
+</html>

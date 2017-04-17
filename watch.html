@@ -3,10 +3,70 @@
 
 <head>
 	<title>Mixtaped</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+	<h1>Mixtaped</h1>
+	<h2>Watching:</h2>
 
+	<div id="watch_remote_collection"></div>
 </body>
+
+<script src="lib/simplewebrtc.bundle.js"></script>
+<script>
+	var host = location.search && location.search.split("?")[1];
+
+	// create our webrtc connection
+	var webrtc = new SimpleWebRTC({
+		// the id/element dom element that will hold "our" video
+		localVideoEl: "",
+		// the id/element dom element that will hold remote videos
+		remoteVideosEl: "",
+		// immediately ask for camera access
+		autoRequestMedia: true,
+
+		debug: false,
+		detectSpeakingEvents: false
+	});
+
+	// when it is ready, join room "main"
+	webrtc.on("readyToCall", function() {
+		console.log("readyToCall");
+
+		webrtc.joinRoom("main");
+		webrtc.mute();
+		webrtc.pause();
+	});
+
+	webrtc.on("videoAdded", function(video, peer) {
+		console.log("videoAdded", video, peer);
+
+		if (peer.id != host) return;
+
+		var remotes = document.getElementById("watch_remote_collection");
+
+		var container = document.createElement("div");
+		container.id = "watch_remote_container_" + webrtc.getDomId(peer);
+		container.className = "hero_video_container";
+		container.appendChild(video);
+
+		remotes.appendChild(container);
+	});
+
+	webrtc.on("videoRemoved", function(video, peer) {
+		console.log("videoRemoved", video, peer);
+
+		if (peer.id != host) return;
+
+		var remotes = document.getElementById("watch_remote_collection");
+		var container = document.getElementById("watch_remote_container_" + webrtc.getDomId(peer));
+		remotes.removeChild(container);
+
+		var message = document.createElement("h2");
+		message.textContent = "Connection is lost. Please go back to /";
+		remotes.appendChild(message);
+	});
+</script>
 
 </html>
