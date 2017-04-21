@@ -5,12 +5,25 @@ var fs = require('fs'),
 	http = require('http'),
 	https = require('https');
 
+var redirectApp = express () ,
+redirectServer = http.createServer(redirectApp);
+redirectApp.use(function requireHTTPS(req, res, next) {
+  	if (!req.secure) {
+	  	return res.redirect('https://' + req.headers.host + req.url);
+	}
+	next();
+})
+redirectServer.listen(80);
+
+
 var app = express();
 app.use(express.static(__dirname));
 app.engine('.html', require('ejs').__express);
-http.createServer(app).listen(80);
+// http.createServer(app).listen(80);
 console.log('running on http://localhost:80');
-
+http.get('*',function(req,res){
+    res.redirect('https://localhost:443'+req.url)
+})
 try {
 	var privateKey = fs.readFileSync('/etc/letsencrypt/live/touhou.live/privkey.pem'),
 		certificate = fs.readFileSync('/etc/letsencrypt/live/touhou.live/cert.pem');
