@@ -2,14 +2,27 @@
 <html>
 
 <head>
-	<title>Mixtaped</title>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 
 <body>
-	<h1>Mixtaped</h1>
-	<h2>Go to <a href="broadcast">/broadcast</a></h2>
-	<h2>Click to watch:</h2>
+    <header>
+        <img src="styles/Blue Mixtaped Logo with TM.svg" alt="Mixtaped" style="width:225px;height:225px;">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Subscriptions</a></li>
+                <li><a href="#">Trending</a></li>
+                <!-- <li><a href="#">My Streams</a></li> -->
+				<li><a href="broadcast">Stream Now</a></li>
+                <li><a href="#">Genres</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h2>What's Currently Streaming</h2>
+    <div id="index_remote_collection"></div>
+	<!-- <h2>Go to <a href="broadcast">/broadcast</a></h2> -->
 	<div id="index_remote_collection"></div>
 </body>
 

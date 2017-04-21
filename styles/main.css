@@ -1,0 +1,44 @@
+html {
+	background: white;
+	width: 900px;
+	margin: 0 auto;
+	text-align: center;
+}
+header {
+	margin: 0;
+}
+h2 {
+	border-radius: 15px;
+	border-style: solid;
+	border-color: lightgrey;
+	background: #02c9ce;
+	padding: 5px 5px;
+}
+nav ul {
+	margin: 0;
+}
+nav ul li {
+	background-color: #02c9ce;
+	color: white;
+	list-style-type: none;
+	padding: 5px 15px;
+	display: inline;
+	margin: 0;
+}
+nav ul li a {
+	color: white;
+	padding: 5px 15px;
+}
+a:hover {
+	background-color: white;
+	color: #02c9ce;
+}
+script {
+	border-radius: 15px;
+	border-style: solid;
+	border-color: lightgray;
+	padding:5px 5px;
+}
+footer {
+	float: bottom;
+}
