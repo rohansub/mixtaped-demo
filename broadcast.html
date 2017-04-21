@@ -26,6 +26,16 @@
 		// immediately ask for camera access
 		autoRequestMedia: true,
 
+		receiveMedia: {
+			offerToReceiveAudio: false,
+			offerToReceiveVideo: false
+		},
+
+		media: {
+			video: true,
+			audio: true
+		},
+
 		debug: false,
 		detectSpeakingEvents: true
 	});

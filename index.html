@@ -8,7 +8,7 @@
 
 <body>
 	<h1>Mixtaped</h1>
-	<h2>Go to /broadcast</h2>
+	<h2>Go to <a href="broadcast">/broadcast</a></h2>
 	<h2>Click to watch:</h2>
 	<div id="index_remote_collection"></div>
 </body>
@@ -23,6 +23,16 @@
 		remoteVideosEl: "",
 		// immediately ask for camera access
 		autoRequestMedia: true,
+
+		receiveMedia: {
+			offerToReceiveAudio: false,
+			offerToReceiveVideo: true
+		},
+
+		media: {
+			video: false,
+			audio: false
+		},
 
 		debug: false,
 		detectSpeakingEvents: false
@@ -39,12 +49,13 @@
 
 	// build remote container and add it to the remote collection
 	webrtc.on("videoAdded", function(video, peer) {
-		console.log("videoAdded", video, peer);
-
 		video.onclick = function() {
 			// Go to the watch page
 			window.location.href = "/watch/" + peer.id;
 		};
+		video.volume = 0;  // This is the golden line to mute the remote video, offerToReceiveAudio = false does not mute when you refresh the broadcast page
+
+		console.log("videoAdded", video, peer);
 
 		// remote container
 		var container = document.createElement("div");
