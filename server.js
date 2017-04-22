@@ -8,14 +8,20 @@ var fs = require('fs'),
 var app = express();
 app.use(express.static(__dirname));
 app.engine('.html', require('ejs').__express);
-http.createServer(app).listen(80);
+
+
+var httpApp = express();
+httpApp.all('*', function (req, res, next) {
+	res.redirect('https://mixtaped.tv');
+});
+http.createServer(httpApp).listen(80);
 console.log('running on http://localhost:80');
 
 try {
-	var privateKey = fs.readFileSync('/etc/letsencrypt/live/touhou.live/privkey.pem'),
-		certificate = fs.readFileSync('/etc/letsencrypt/live/touhou.live/cert.pem');
-	// console.log(privateKey);
-	// console.log(certificate);
+	var privateKey = fs.readFileSync('/etc/letsencrypt/live/mixtaped.tv/privkey.pem'),
+		certificate = fs.readFileSync('/etc/letsencrypt/live/mixtaped.tv/cert.pem');
+	console.log(privateKey);
+	console.log(certificate);
 
 	https.createServer({key: privateKey, cert: certificate}, app).listen(443);
 	console.log('running on https://localhost:443');
