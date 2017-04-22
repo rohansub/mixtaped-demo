@@ -29,7 +29,7 @@ try {
 
 	var httpApp = express();
 	httpApp.all('*', function (req, res, next) {
-		res.redirect('https://mixtaped.tv');
+		res.redirect('https://' + req.hostname + req.url);
 	});
 	http.createServer(httpApp).listen(80);
 	console.log('[mixtaped] reroute server running on http://localhost:80');
