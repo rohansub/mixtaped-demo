@@ -4,6 +4,7 @@ var fs = require('fs'),
 	http = require('http'),
 	https = require('https');
 
+
 var app = express();
 app.use(express.static(__dirname));
 app.engine('.html', require('ejs').__express);
@@ -11,7 +12,6 @@ app.engine('.html', require('ejs').__express);
 app.get("/broadcast", function(req, res) {
 	res.render(__dirname + "/broadcast.html");
 });
-
 app.get("/watch/:tagId", function(req, res) {
 	res.render(__dirname + "/watch.html", {
 		user: req.params.tagId
