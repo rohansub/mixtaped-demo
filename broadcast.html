@@ -67,10 +67,14 @@
 	// when it is ready, join room "main"
 	webrtc.on("readyToCall", function() {
 		console.log("readyToCall");
-
 		webrtc.joinRoom("main");
 	});
 
+ 	webrtc.on("videoAdded", function(video, peer) {
+		peer.stream.getAudioTracks()[0].enabled = false;
+		peer.stream.getVideoTracks()[0].enabled = false;
+	});
+  
 	webrtc.on("channelMessage", function(peer, label, data) {
 		if (label == "hark") return true;
 		console.log("channelMessage", peer, label, data);
