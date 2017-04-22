@@ -24,6 +24,18 @@
 	<h2>Watching:</h2>
 
 	<div id="watch_remote_collection"></div>
+
+	<div id="comment_input">
+		<label>Name:</label>
+		<input id="comment_input_name" type="text">
+		<br>
+		<label>Message:</label>
+		<textarea id="comment_input_text"></textarea>
+		<button onclick="onCommentSubmit()">Send</button>
+	</div>
+	<div id="comment_collection">
+		
+	</div>
 </body>
 
 <script src="../lib/simplewebrtc.bundle.js"></script>
@@ -102,6 +114,43 @@
 		message.textContent = "Connection is lost. Please go back to /";
 		remotes.appendChild(message);
 	});
+
+	webrtc.on("channelMessage", function(peer, label, data) {
+		if (label == "hark") return true;
+		console.log("channelMessage", peer, label, data);
+
+		if (data.type == "chat" && data.payload.room == host) {
+			if (data.payload.id == null)  // Beautify hash
+				data.payload.id = peer.id.replace("-", "").toLowerCase().substring(0, 7);
+			showComment(data.payload);
+		}
+	});
+
+	function onCommentSubmit() {
+		var input = document.getElementById("comment_input_name");
+		var textarea = document.getElementById("comment_input_text");
+		var data = { user: input.value, room: host, text: textarea.value, time: new Date().toString()};
+		webrtc.sendDirectlyToAll('meta', 'chat', data);
+
+		data.id = "me";
+		showComment(data);
+		
+		textarea.value = "";
+	}
+
+	function showComment(data) {
+		var container = document.createElement("div");
+
+		var user = document.createElement("p");
+		user.appendChild(document.createTextNode(data.user + "(" + data.id + ")" + " at " + data.time));
+		container.appendChild(user);
+		var text = document.createElement("p");
+		text.appendChild(document.createTextNode(data.text));
+		container.appendChild(text);
+
+		var comments = document.getElementById("comment_collection");
+		comments.appendChild(container);
+	}
 </script>
 
 </html>
