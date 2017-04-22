@@ -108,8 +108,8 @@
 		console.log("channelMessage", peer, label, data);
 
 		if (data.type == "chat" && data.payload.room == host) {
-			// Beautify hash
-			data.payload.id = peer.id.replace("-", "").toLowerCase().substring(0, 7);
+			if (data.payload.id == null)  // Beautify hash
+				data.payload.id = peer.id.replace("-", "").toLowerCase().substring(0, 7);
 			showComment(data.payload);
 		}
 	});
