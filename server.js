@@ -34,7 +34,7 @@ try {
 	var httpApp = express();
 	httpApp.all('*', function (req, res, next) {
 		res.redirect('https://' + req.hostname + req.url);
-		
+
 		console.log('[mixtaped] rerouted to https://' + req.hostname + req.url);
 	});
 	http.createServer(httpApp).listen(80);

@@ -64,9 +64,21 @@
 
 	webrtc.on("videoAdded", function(video, peer) {
 		console.log("videoAdded", video, peer);
+		if (peer.id != host) {
+			//Mute audio if peer isn't host
 
-		if (peer.id != host) return;
-
+			// peer.stream.getAudioTracks()[0].enabled = false;
+			// for(var i = 0; i < peer.stream.getAudioTracks().length; i++){
+			// }
+			// for(var j = 0; j < peer.stream.getVideoTracks().length; j++){
+			// 	peer.stream.getVideoTracks()[j].enabled = false;
+			// }
+			//console.log(typeof(video));
+			peer.stream.getAudioTracks()[0].enabled = false;
+			peer.stream.getVideoTracks()[0].enabled = false;
+			return;
+		}
+		// peer.stream.getAudioTracks()[0].enabled = false;
 		var remotes = document.getElementById("watch_remote_collection");
 
 		var container = document.createElement("div");
