@@ -24,11 +24,13 @@ app.get("/watch/:tagId", function(req, res) {
 
 try {
 	var privateKey = fs.readFileSync('/etc/letsencrypt/live/mixtaped.tv/privkey.pem'),
-		certificate = fs.readFileSync('/etc/letsencrypt/live/mixtaped.tv/cert.pem');
+		certificate = fs.readFileSync('/etc/letsencrypt/live/mixtaped.tv/cert.pem'),
+		chain = fs.readFileSync('/etc/letsencrypt/live/mixtaped.tv/chain.pem');
 	console.log('[mixtaped] private key\n', privateKey);
 	console.log('[mixtaped] certificate\n', certificate);
+	console.log('[mixtaped] chain\n', chain);
 
-	https.createServer({key: privateKey, cert: certificate}, app).listen(443);
+	https.createServer({key: privateKey, cert: certificate, ca: chain}, app).listen(443);
 	console.log('[mixtaped] server running on https://localhost:443');
 
 	var httpApp = express();
