@@ -1,6 +1,5 @@
 // silly chrome wants SSL to do screensharing
 var fs = require('fs'),
-	crypto = require('crypto'),
 	express = require('express'),
 	http = require('http'),
 	https = require('https');
@@ -9,13 +8,15 @@ var app = express();
 app.use(express.static(__dirname));
 app.engine('.html', require('ejs').__express);
 
-
-var httpApp = express();
-httpApp.all('*', function (req, res, next) {
-	res.redirect('https://mixtaped.tv');
+app.get("/broadcast", function(req, res) {
+	res.render(__dirname + "/broadcast.html");
 });
-http.createServer(httpApp).listen(80);
-console.log('running on http://localhost:80');
+
+app.get("/watch/:tagId", function(req, res) {
+	res.render(__dirname + "/watch.html", {
+		user: req.params.tagId
+	});
+});
 
 try {
 	var privateKey = fs.readFileSync('/etc/letsencrypt/live/mixtaped.tv/privkey.pem'),
@@ -24,18 +25,18 @@ try {
 	console.log(certificate);
 
 	https.createServer({key: privateKey, cert: certificate}, app).listen(443);
-	console.log('running on https://localhost:443');
-} catch (err) {
-	console.log('cannot start https server\n', err);
-}
+	console.log('[mixtaped] server running on https://localhost:443');
 
-
-app.get("/broadcast", function(req, res) {
-    res.render(__dirname + "/broadcast.html");
-});
-
-app.get("/watch/:tagId", function(req, res) {
-	res.render(__dirname + "/watch.html", {
-		user: req.params.tagId
+	var httpApp = express();
+	httpApp.all('*', function (req, res, next) {
+		res.redirect('https://mixtaped.tv');
 	});
-});
+	http.createServer(httpApp).listen(80);
+	console.log('[mixtaped] reroute server running on http://localhost:80');
+} catch (err) {
+	console.log('[mixtaped] cannot start https server\n', err);
+
+	// Local development;
+	http.createServer(app).listen(8090);
+	console.log('[mixtaped] server running on http://localhost:8090');
+}
