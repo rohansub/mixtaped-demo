@@ -7,3 +7,6 @@ firefox*.bz2
 
 # JetBrains IDEs
 .idea
+
+# Logs
+.log
