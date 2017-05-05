@@ -140,10 +140,10 @@
 			window.location.href = "/watch/" + peer.id;
 		};
 
-		video.className = "embed-responsive-item rounded";
 
 		var featured_div = document.getElementById("idx-featured");
 		if (featured_div.childNodes.length == 0) {
+			video.className = "embed-responsive-item";
 			featured_div.appendChild(video);
 			return;
 		}
@@ -157,6 +157,7 @@
 			</div>
 		</div>
 		*/
+		video.className = "embed-responsive-item rounded";
 		var l1 = document.createElement("div");
 		l1.className = "embed-responsive embed-responsive-4by3";
 		l1.appendChild(video);
