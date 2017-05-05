@@ -1,44 +1,124 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<title>Mixtaped</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../styles/main.css">
+	<title>Mixtaped - Watch</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
+<body style="background-color: #36c0c6;">
+<div class="container-fluid px-5 py-2">
+	<nav class="navbar navbar-toggleable-md navbar-inverse clearfix">
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-<body>
-	<header>
-        <img src="../styles/Blue Mixtaped Logo with TM.svg" alt="Mixtaped" style="width:225px;height:225px;">
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Subscriptions</a></li>
-                <li><a href="#">Trending</a></li>
-                <!-- <li><a href="#">My Streams</a></li> -->
-				<li><a href="broadcast">Stream Now</a></li>
-                <li><a href="#">Genres</a></li>
-            </ul>
-        </nav>
-    </header>
-	<h2>Watching:</h2>
+		<a class="navbar-brand" href="/">
+			<img src="/img/mixtaped.svg" height="30" alt="Mixtaped">
+		</a>
 
-	<div id="watch_remote_collection"></div>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<form class="form-inline mx-auto">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search...">
+					<span class="input-group-btn">
+						<button class="btn btn-secondary disabled" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+					</span>
+				</div>
+			</form>
 
-	<div id="comment_input">
-		<label>Name:</label>
-		<input id="comment_input_name" type="text">
-		<br>
-		<label>Message:</label>
-		<textarea id="comment_input_text"></textarea>
-		<button onclick="onCommentSubmit()">Send</button>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#"><i class="fa fa-certificate" aria-hidden="true"></i> Subscriptions</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i> Trending</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#"><i class="fa fa-user" aria-hidden="true"></i> My Streams</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/broadcast"><i class="fa fa-microphone" aria-hidden="true"></i> Go Live</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#"><i class="fa fa-music" aria-hidden="true"></i> Genres</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</div>
+
+<div class="container rounded" style="background-color: white; color: #676666;">
+	<br>
+	<div class="row">
+		<div class="col-9">
+			<div class="row">
+				<div id="wtc-main" class="embed-responsive embed-responsive-16by9 mb-4">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="example-text-input" class="col-2 col-form-label"><i class="fa fa-user-circle" aria-hidden="true"></i> Nick Name</label>
+				<div class="col-4">
+					<input id="wtc-comment-nick" class="form-control" type="text" value="Anonymous">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="wtc-comment-message" class="col-2 col-form-label"><i class="fa fa-envelope-open" aria-hidden="true"></i> Message</label>
+				<div class="col-10">
+					<div class="input-group">
+						<input id="wtc-comment-message" type="text" class="form-control" value="Great!">
+						<span class="input-group-btn">
+							<button class="btn btn-primary" type="button" onclick="onCommentSubmit()"><i class="fa fa-send" aria-hidden="true"></i></button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<ul id="wtc-chat-list" class="list-group mb-4">
+				<li class="list-group-item">
+					<div class="d-flex w-100 justify-content-between">
+						<small>Mixtaped</small>
+						<small>system</small>
+					</div>
+					Welcome to the live!
+				</li>
+			</ul>
+		</div>
 	</div>
-	<div id="comment_collection">
-		
-	</div>
-</body>
+</div>
 
-<script src="../lib/simplewebrtc.bundle.js"></script>
+<footer class="footer">
+	<div class="container-fluid px-5 py-2" style="color: white;">
+		<div class="row align-items-center">
+			<div class="col">
+				<img src="/img/mixtaped-words.svg" height="120" alt="">
+			</div>
+			<div class="col">
+				<p class="h4 text-center">
+					Contact us at: mixtaped.tv@gmail.com
+				</p>
+			</div>
+			<div class="col">
+				<h2 class="text-right">
+					&copy; Mixtaped
+				</h2>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+<script src="https://use.fontawesome.com/feea410c25.js"></script>
+
+<script src="/lib/simplewebrtc.bundle.js"></script>
 <script>
 	var host = <%-JSON.stringify( user )%>;
 
@@ -74,31 +154,20 @@
 		webrtc.pause();
 	});
 
-	webrtc.on("videoAdded", function(video, peer) {
+	// disable all the incoming video and audio feeds.
+ 	webrtc.on("videoAdded", function(video, peer) {
 		console.log("videoAdded", video, peer);
+
 		if (peer.id != host) {
 			//Mute audio if peer isn't host
-
-			// peer.stream.getAudioTracks()[0].enabled = false;
-			// for(var i = 0; i < peer.stream.getAudioTracks().length; i++){
-			// }
-			// for(var j = 0; j < peer.stream.getVideoTracks().length; j++){
-			// 	peer.stream.getVideoTracks()[j].enabled = false;
-			// }
-			//console.log(typeof(video));
 			peer.stream.getAudioTracks()[0].enabled = false;
 			peer.stream.getVideoTracks()[0].enabled = false;
 			return;
 		}
-		// peer.stream.getAudioTracks()[0].enabled = false;
-		var remotes = document.getElementById("watch_remote_collection");
 
-		var container = document.createElement("div");
-		container.id = "watch_remote_container_" + webrtc.getDomId(peer);
-		container.className = "hero_video_container";
-		container.appendChild(video);
+		video.className = "embed-responsive-item rounded";
 
-		remotes.appendChild(container);
+		document.getElementById("wtc-main").appendChild(video);
 	});
 
 	webrtc.on("videoRemoved", function(video, peer) {
@@ -106,13 +175,7 @@
 
 		if (peer.id != host) return;
 
-		var remotes = document.getElementById("watch_remote_collection");
-		var container = document.getElementById("watch_remote_container_" + webrtc.getDomId(peer));
-		remotes.removeChild(container);
-
-		var message = document.createElement("h2");
-		message.textContent = "Connection is lost. Please go back to /";
-		remotes.appendChild(message);
+		document.getElementById("wtc-main").innerHTML = "<h3>Connection is lost. Please go back to the home page.</h3>";
 	});
 
 	webrtc.on("channelMessage", function(peer, label, data) {
@@ -127,30 +190,42 @@
 	});
 
 	function onCommentSubmit() {
-		var input = document.getElementById("comment_input_name");
-		var textarea = document.getElementById("comment_input_text");
-		var data = { user: input.value, room: host, text: textarea.value, time: new Date().toString()};
+		var nick = document.getElementById("wtc-comment-nick");
+		var message = document.getElementById("wtc-comment-message");
+
+		if (message.value.length == 0) return; 
+
+		var data = { user: nick.value, room: host, text: message.value, time: new Date().toString()};
 		webrtc.sendDirectlyToAll('meta', 'chat', data);
 
 		data.id = "me";
 		showComment(data);
 		
-		textarea.value = "";
+		message.value = "";
 	}
 
 	function showComment(data) {
-		var container = document.createElement("div");
+		console.log("showComment", data);
 
-		var user = document.createElement("p");
-		user.appendChild(document.createTextNode(data.user + "(" + data.id + ")" + " at " + data.time));
-		container.appendChild(user);
-		var text = document.createElement("p");
-		text.appendChild(document.createTextNode(data.text));
-		container.appendChild(text);
+		if (data.text.length == 0) return;
 
-		var comments = document.getElementById("comment_collection");
-		comments.appendChild(container);
+		/*
+				<li class="list-group-item">
+					<div class="d-flex w-100 justify-content-between">
+						<small>John Doe</small>
+						<small>ab32dcd</small>
+					</div>
+					This is the stuff I like!
+				</li>
+		*/
+		var temp = document.createElement("div");
+		temp.innerHTML = "<li class='list-group-item'>" + 
+			"<div class='d-flex w-100 justify-content-between'><small>" + data.user + "</small><small>" + data.id + "</small></div>" +
+			data.text + "</li>";
+
+		var comments = document.getElementById("wtc-chat-list");
+		comments.appendChild(temp.firstChild);
 	}
 </script>
-
+</body>
 </html>

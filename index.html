@@ -1,34 +1,103 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Mixtaped</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="styles/main.css">
-</head>
+	<title>Mixtaped</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<body>
-    <header>
-        <img src="styles/Blue Mixtaped Logo with TM.svg" alt="Mixtaped" style="width:225px;height:225px;">
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Subscriptions</a></li>
-                <li><a href="#">Trending</a></li>
-                <!-- <li><a href="#">My Streams</a></li> -->
-				<li><a href="broadcast">Stream Now</a></li>
-                <li><a href="#">Genres</a></li>
-            </ul>
-        </nav>
-    </header>
-    <h2>What's Currently Streaming</h2>
-    <div id="index_remote_collection"></div>
-	<!-- <h2>Go to <a href="broadcast">/broadcast</a></h2> -->
-	<div id="index_remote_collection"></div>
-</body>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body style="background-color: #36c0c6;">
+<div class="container-fluid px-5 py-2">
+	<nav class="navbar navbar-toggleable-md navbar-inverse clearfix">
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<a class="navbar-brand" href="/">
+			<img src="./img/mixtaped.svg" height="30" alt="Mixtaped">
+		</a>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<form class="form-inline mx-auto">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search...">
+					<span class="input-group-btn">
+						<button class="btn btn-secondary disabled" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+					</span>
+				</div>
+			</form>
+
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#"><i class="fa fa-certificate" aria-hidden="true"></i> Subscriptions</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i> Trending</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#"><i class="fa fa-user" aria-hidden="true"></i> My Streams</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/broadcast"><i class="fa fa-microphone" aria-hidden="true"></i> Go Live</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#"><i class="fa fa-music" aria-hidden="true"></i> Genres</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</div>
+
+<div class="container rounded pb-5" style="background-color: white; color: #676666;">
+	<br>
+	<h2 class="display-4 text-center">Featured</h2>
+
+	<div class="embed-responsive embed-responsive-16by9" id="idx-featured">
+	</div>
+
+	<br>
+
+	<h2 class="display-4 text-center">Recommended</h2>
+
+	<div class="row" id="idx-recommended">
+	</div>
+</div>
+
+<footer class="footer">
+	<div class="container-fluid px-5 py-2" style="color: white;">
+		<div class="row align-items-center">
+			<div class="col">
+				<img src="./img/mixtaped-words.svg" height="120" alt="">
+			</div>
+			<div class="col">
+				<p class="h4 text-center">
+					Contact us at: mixtaped.tv@gmail.com
+				</p>
+			</div>
+			<div class="col">
+				<h2 class="text-right">
+					&copy; Mixtaped
+				</h2>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+<script src="https://use.fontawesome.com/feea410c25.js"></script>
 
 <script src="lib/simplewebrtc.bundle.js"></script>
 <script>
+	// clear feature window
+	document.getElementById("idx-featured").innerHTML = "";
+
 	// create our webrtc connection
 	var webrtc = new SimpleWebRTC({
 		// the id/element dom element that will hold "our" video
@@ -63,55 +132,62 @@
 
 	// build remote container and add it to the remote collection
 	webrtc.on("videoAdded", function(video, peer) {
+		console.log("videoAdded", video, peer);
+
+		video.volume = 0;  // This is the golden line to mute the remote video, offerToReceiveAudio = false does not mute when you refresh the broadcast page
 		video.onclick = function() {
 			// Go to the watch page
 			window.location.href = "/watch/" + peer.id;
 		};
-		video.volume = 0;  // This is the golden line to mute the remote video, offerToReceiveAudio = false does not mute when you refresh the broadcast page
 
-		console.log("videoAdded", video, peer);
+		video.className = "embed-responsive-item rounded";
 
-		// remote container
-		var container = document.createElement("div");
-		container.id = "index_remote_container_" + webrtc.getDomId(peer);  // cannot use peer.id here, don't know why
-		container.className = "index_video_container";
-		container.appendChild(video);
+		var featured_div = document.getElementById("idx-featured");
+		if (featured_div.childNodes.length == 0) {
+			featured_div.appendChild(video);
+			return;
+		}
 
-		// volume bar
-		var vol = document.createElement("div");
-		vol.id = "index_remote_volume_" + peer.id;
-		vol.className = "index_video_container_volume_bar";
-		container.appendChild(vol);
+		/*
+		<div class="col-sm-3"> l3
+			<div class="card"> l2
+				<div class="embed-responsive embed-responsive-4by3"> l1
+					<video src="" class="embed-responsive-item"></video>
+				</div>
+			</div>
+		</div>
+		*/
+		var l1 = document.createElement("div");
+		l1.className = "embed-responsive embed-responsive-4by3";
+		l1.appendChild(video);
 
-		var remotes = document.getElementById("index_remote_collection");
-		remotes.appendChild(container);
+		var l2 = document.createElement("div");
+		l2.className = "card"
+		l2.appendChild(l1);
+
+		var l3 = document.createElement("div");
+		l3.className = "col-sm-3";
+		l3.id = "idx-recommended-" + webrtc.getDomId(peer);
+		l3.appendChild(l2);
+
+		var recommended_cards = document.getElementById("idx-recommended");
+		recommended_cards.appendChild(l3);
 	});
 
 	// find and delete the remote container in the remote collection
 	webrtc.on("videoRemoved", function(video, peer) {
 		console.log("videoRemoved", video, peer);
 
-		var container = document.getElementById("index_remote_container_" + webrtc.getDomId(peer));  // cannot use peer.id here, don"t know why
+		var container = document.getElementById("idx-recommended-" + webrtc.getDomId(peer));  // cannot use peer.id here, don"t know why
 
-		var remotes = document.getElementById("index_remote_collection");
-		remotes.removeChild(container);
-	});
-
-	webrtc.on("channelMessage", function(peer, label, data) {
-		if (data.type == "volume") {
-			showVolume(document.getElementById("index_remote_volume_" + peer.id), data.volume);
-		}
-	});
-
-	function showVolume(el, volume) {
-		if (volume < -70) { // vary between -70 and -20
-			el.style.height = "0px";
-		} else if (volume > -20) {
-			el.style.height = "100%";
+		if (container != null) {
+			var recommended_cards = document.getElementById("idx-recommended");
+			recommended_cards.removeChild(container);
 		} else {
-			el.style.height = "" + Math.floor((volume + 70) / 50 * 100) + "%";
+			// clear feature window
+			document.getElementById("idx-featured").innerHTML = "";
 		}
-	}
+	});
 </script>
-
+</body>
 </html>

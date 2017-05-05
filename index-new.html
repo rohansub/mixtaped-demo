@@ -8,118 +8,186 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
 <body style="background-color: #36c0c6;">
-	<div class="container-fluid px-5 py-2">
-		<nav class="navbar navbar-toggleable-md navbar-inverse clearfix">
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+<div class="container-fluid px-5 py-2">
+	<nav class="navbar navbar-toggleable-md navbar-inverse clearfix">
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-			<a class="navbar-brand" href="/">
-				<img src="./img/mixtaped.svg" height="30" alt="Mixtaped">
-			</a>
+		<a class="navbar-brand" href="/">
+			<img src="/img/mixtaped.svg" height="30" alt="Mixtaped">
+		</a>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<form class="form-inline mx-auto">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search...">
-						<span class="input-group-btn">
-							<button class="btn btn-secondary disabled" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-						</span>
-					</div>
-				</form>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<form class="form-inline mx-auto">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search...">
+					<span class="input-group-btn">
+						<button class="btn btn-secondary disabled" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+					</span>
+				</div>
+			</form>
 
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link disabled" href="#"><i class="fa fa-certificate" aria-hidden="true"></i> Subscriptions</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link disabled" href="#"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i> Trending</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link disabled" href="#"><i class="fa fa-user" aria-hidden="true"></i> My Streams</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/broadcast"><i class="fa fa-microphone" aria-hidden="true"></i> Go Live</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link disabled" href="#"><i class="fa fa-music" aria-hidden="true"></i> Genres</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#"><i class="fa fa-certificate" aria-hidden="true"></i> Subscriptions</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i> Trending</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#"><i class="fa fa-user" aria-hidden="true"></i> My Streams</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/broadcast"><i class="fa fa-microphone" aria-hidden="true"></i> Go Live</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#"><i class="fa fa-music" aria-hidden="true"></i> Genres</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</div>
+
+<div class="container rounded pb-5" style="background-color: white; color: #676666;">
+	<br>
+	<h2 class="display-4 text-center">Featured</h2>
+
+	<div class="embed-responsive embed-responsive-16by9" id="idx-featured">
 	</div>
 
-	<div class="container rounded pb-5" style="background-color: white; color: #676666;">
-		<br>
-		<h2 class="display-4 text-center">Featured</h2>
+	<br>
 
-		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-			<div class="carousel-inner" role="listbox">
-				<div class="carousel-item active">
-					<img class="d-block img-fluid mx-auto" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15bd5308dc8%20text%20%7B%20fill%3A%23555%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bd5308dc8%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22285.921875%22%20y%3D%22217.7%22%3EFirst%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="First slide">
-				</div>
-				<div class="carousel-item">
-					<img class="d-block img-fluid mx-auto" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15bd5308dc9%20text%20%7B%20fill%3A%23444%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bd5308dc9%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23666%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22247.3203125%22%20y%3D%22217.7%22%3ESecond%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Second slide">
-				</div>
-				<div class="carousel-item">
-					<img class="d-block img-fluid mx-auto" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15bd5308dca%20text%20%7B%20fill%3A%23333%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bd5308dca%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23555%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22277%22%20y%3D%22217.7%22%3EThird%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Third slide">
-				</div>
+	<h2 class="display-4 text-center">Recommended</h2>
+
+	<div class="row" id="idx-recommended">
+	</div>
+</div>
+
+<footer class="footer">
+	<div class="container-fluid px-5 py-2" style="color: white;">
+		<div class="row align-items-center">
+			<div class="col">
+				<img src="/img/mixtaped-words.svg" height="120" alt="">
 			</div>
-
-			<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="color: #676666;">
-				<i class="fa fa-chevron-left" aria-hidden="true"></i>
-			</a>
-			<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="color: #676666;">
-				<i class="fa fa-chevron-right" aria-hidden="true"></i>
-			</a>
-		</div>
-
-		<br>
-
-		<h2 class="display-4 text-center">Recommended</h2>
-
-		<div class="row">
-			<div class="col-sm-3">	
-				<div class="card">
-					<img class="card-img img-fluid" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22235%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20235%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15bd53e1307%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A12pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bd53e1307%22%3E%3Crect%20width%3D%22235%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2286.7578125%22%20y%3D%2295.1%22%3E235x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
-				</div>
+			<div class="col">
+				<p class="h4 text-center">
+					Contact us at: mixtaped.tv@gmail.com
+				</p>
 			</div>
-
-			<div class="col-sm-3">	
-				<div class="card">
-					<img class="card-img img-fluid" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22235%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20235%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15bd53e1307%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A12pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bd53e1307%22%3E%3Crect%20width%3D%22235%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2286.7578125%22%20y%3D%2295.1%22%3E235x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
-				</div>
+			<div class="col">
+				<h2 class="text-right">
+					&copy; Mixtaped
+				</h2>
 			</div>
 		</div>
 	</div>
+</footer>
 
-	<footer class="footer">
-		<div class="container-fluid px-5 py-2" style="color: white;">
-			<div class="row align-items-center">
-				<div class="col">
-					<img src="./img/mixtaped-words.svg" height="120" alt="">
-				</div>
-				<div class="col">
-					<p class="h4 text-center">
-						Contact us at: mixtaped.tv@gmail.com
-					</p>
-				</div>
-				<div class="col">
-					<h2 class="text-right">
-						&copy; Mixtaped
-					</h2>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+<script src="https://use.fontawesome.com/feea410c25.js"></script>
+
+<script src="/lib/simplewebrtc.bundle.js"></script>
+<script>
+	// clear feature window
+	document.getElementById("idx-featured").innerHTML = "";
+
+	// create our webrtc connection
+	var webrtc = new SimpleWebRTC({
+		// the id/element dom element that will hold "our" video
+		localVideoEl: "",
+		// the id/element dom element that will hold remote videos
+		remoteVideosEl: "",
+		// immediately ask for camera access
+		autoRequestMedia: true,
+
+		receiveMedia: {
+			offerToReceiveAudio: false,
+			offerToReceiveVideo: true
+		},
+
+		media: {
+			video: false,
+			audio: false
+		},
+
+		debug: false,
+		detectSpeakingEvents: false
+	});
+
+	// when it is ready, join room "main"
+	webrtc.on("readyToCall", function() {
+		console.log("readyToCall");
+
+		webrtc.joinRoom("main");
+		webrtc.mute();
+		webrtc.pause();
+	});
+
+	// build remote container and add it to the remote collection
+	webrtc.on("videoAdded", function(video, peer) {
+		console.log("videoAdded", video, peer);
+
+		video.volume = 0;  // This is the golden line to mute the remote video, offerToReceiveAudio = false does not mute when you refresh the broadcast page
+		video.onclick = function() {
+			// Go to the watch page
+			window.location.href = "/watch/" + peer.id;
+		};
+
+		video.className = "embed-responsive-item rounded";
+
+		var featured_div = document.getElementById("idx-featured");
+		if (featured_div.childNodes.length == 0) {
+			featured_div.appendChild(video);
+			return;
+		}
+
+		/*
+		<div class="col-sm-3"> l3
+			<div class="card"> l2
+				<div class="embed-responsive embed-responsive-4by3"> l1
+					<video src="" class="embed-responsive-item"></video>
 				</div>
 			</div>
 		</div>
-	</footer>
-	<!-- jQuery first, then Tether, then Bootstrap JS. -->
-	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		*/
+		var l1 = document.createElement("div");
+		l1.className = "embed-responsive embed-responsive-4by3";
+		l1.appendChild(video);
 
-	<script src="https://use.fontawesome.com/feea410c25.js"></script>
+		var l2 = document.createElement("div");
+		l2.className = "card"
+		l2.appendChild(l1);
+
+		var l3 = document.createElement("div");
+		l3.className = "col-sm-3";
+		l3.id = "idx-recommended-" + webrtc.getDomId(peer);
+		l3.appendChild(l2);
+
+		var recommended_cards = document.getElementById("idx-recommended");
+		recommended_cards.appendChild(l3);
+	});
+
+	// find and delete the remote container in the remote collection
+	webrtc.on("videoRemoved", function(video, peer) {
+		console.log("videoRemoved", video, peer);
+
+		var container = document.getElementById("idx-recommended-" + webrtc.getDomId(peer));  // cannot use peer.id here, don"t know why
+
+		if (container != null) {
+			var recommended_cards = document.getElementById("idx-recommended");
+			recommended_cards.removeChild(container);
+		} else {
+			// clear feature window
+			document.getElementById("idx-featured").innerHTML = "";
+		}
+	});
+</script>
 </body>
 </html>
